@@ -1,22 +1,28 @@
-use crate::substitutions::{char_swap::apply_replacements, word_swap::REPLACEMENTS};
+use crate::substitutions::{char_swap, word_swap};
+use regex::Regex;
+
+fn apply_all(word: &str, edited: &mut String) {
+    let replaced = if word_swap::has_replacement(word) {
+        word_swap::apply_replacements(word)
+    } else {
+        char_swap::apply_replacements(word)
+    };
+
+    edited.push_str(&replaced);
+}
 
 pub fn translate(content: String) -> String {
-    let mut result = content;
+    let mut edited = String::new();
+    let re = Regex::new(r"(\w+|\W+)").unwrap();
 
-    for (word, replacement) in REPLACEMENTS.iter() {
-        result = result.replace(word, replacement);
+    for cap in re.captures_iter(&content) {
+        let part = &cap[0];
+        if part.chars().all(char::is_alphabetic) {
+            apply_all(part, &mut edited);
+        } else {
+            edited.push_str(part);
+        }
     }
 
-    let mut char_edited = String::new();
-    let mut last_end = 0;
-
-    for (start, part) in result.match_indices(char::is_whitespace) {
-        char_edited.push_str(&apply_replacements(&result[last_end..start]));
-        char_edited.push_str(part);
-        last_end = start + part.len();
-    }
-
-    char_edited.push_str(&apply_replacements(&result[last_end..]));
-
-    char_edited
+    edited
 }

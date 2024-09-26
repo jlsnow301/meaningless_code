@@ -1,7 +1,7 @@
 use lazy_static::lazy_static;
 use regex::Regex;
 
-const CHAR_REPLACEMENTS: &[(&str, &str)] = &[
+const REPLACEMENTS: &[(&str, &str)] = &[
     (r"th", "ð"),
     (r"Th", "Ð"),
     (r"ph", "f"),
@@ -25,20 +25,21 @@ const CHAR_REPLACEMENTS: &[(&str, &str)] = &[
     (r"eau", "u"),
     (r"ea", "e"),
     (r"ee", "e"),
+    (r"ate$", "at"),
+    (r"oo", "u"),
 ];
 
 lazy_static! {
-    static ref CHAR_REGEX_REPLACEMENTS: Vec<(Regex, &'static str)> = CHAR_REPLACEMENTS
+    static ref CHAR_REPLACEMENTS: Vec<(Regex, &'static str)> = REPLACEMENTS
         .iter()
         .map(|&(pattern, replacement)| (Regex::new(pattern).unwrap(), replacement))
         .collect();
 }
 
-// Take one word at a time, then apply all the replacements
 pub fn apply_replacements(word: &str) -> String {
     let mut result = word.to_string();
 
-    for (pattern, replacement) in CHAR_REGEX_REPLACEMENTS.iter() {
+    for (pattern, replacement) in CHAR_REPLACEMENTS.iter() {
         result = pattern.replace_all(&result, *replacement).to_string();
     }
 

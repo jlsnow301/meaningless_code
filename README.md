@@ -23,5 +23,10 @@ The output should sound mostly the same as standard English. If you can speak En
 ## What are some of the conventions / rules / changes?
 
 1. English is written phonetically, with few exceptions.
-2. The English alphabet was historically reduced due to technological limitations of the printing press. Since this is no longer an issue, some of the missing characters are added, while others are removed as redundant.
-3. Letters have only one sound. There are no variations like "c" in "cat" and "city".
+2. The English alphabet was historically reduced due to technological limitations of the printing press. Since this is no longer an issue, some of the missing characters are added.
+3. Some letters are removed as redundant, such as 'k' and later "q".
+4. Letters have only one sound. There are no variations like "c" in "cat" and "city".
+
+## Acceptable
+
+1. Compound sounds. The "sh" in "shadow" does not need to become "ʃadow". However, the "th" in "thought" _does_ become "ð" because neither t nor h make that sound!

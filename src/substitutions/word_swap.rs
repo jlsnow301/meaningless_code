@@ -2,7 +2,7 @@ use lazy_static::lazy_static;
 use std::collections::HashMap;
 
 lazy_static! {
-    pub static ref REPLACEMENTS: HashMap<&'static str, &'static str> = HashMap::from([
+    static ref REPLACEMENTS: HashMap<&'static str, &'static str> = HashMap::from([
         ("cat", "cæt"),
         ("not", "nɒt"),
         ("cut", "cʌt"),
@@ -19,4 +19,16 @@ lazy_static! {
         ("like", "lik"),
         ("their", "ðɛr"),
     ]);
+}
+
+pub fn has_replacement(word: &str) -> bool {
+    REPLACEMENTS.contains_key(word)
+}
+
+pub fn apply_replacements(word: &str) -> String {
+    if let Some(&replacement) = REPLACEMENTS.get(word) {
+        replacement.to_string()
+    } else {
+        word.to_string()
+    }
 }
