@@ -1,22 +1,22 @@
-use regex::Regex;
-use std::collections::HashMap;
+use crate::substitutions::{char_swap::apply_replacements, word_swap::REPLACEMENTS};
 
-pub fn translate(
-    content: String,
-    word_swap: &HashMap<&str, &str>,
-    char_swap: &HashMap<&str, &str>,
-) -> String {
+pub fn translate(content: String) -> String {
     let mut result = content;
 
-    for (pattern, replacement) in word_swap.iter() {
-        let re = Regex::new(&format!(r"\b{}\b", regex::escape(pattern))).unwrap();
-        result = re.replace_all(&result, *replacement).to_string();
+    for (word, replacement) in REPLACEMENTS.iter() {
+        result = result.replace(word, replacement);
     }
 
-    for (pattern, replacement) in char_swap.iter() {
-        let re = Regex::new(pattern).unwrap();
-        result = re.replace_all(&result, *replacement).to_string();
+    let mut char_edited = String::new();
+    let mut last_end = 0;
+
+    for (start, part) in result.match_indices(char::is_whitespace) {
+        char_edited.push_str(&apply_replacements(&result[last_end..start]));
+        char_edited.push_str(part);
+        last_end = start + part.len();
     }
 
-    result
+    char_edited.push_str(&apply_replacements(&result[last_end..]));
+
+    char_edited
 }

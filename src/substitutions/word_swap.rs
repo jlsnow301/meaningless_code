@@ -2,7 +2,7 @@ use lazy_static::lazy_static;
 use std::collections::HashMap;
 
 lazy_static! {
-    pub static ref map: HashMap<&'static str, &'static str> = HashMap::from([
+    pub static ref REPLACEMENTS: HashMap<&'static str, &'static str> = HashMap::from([
         ("cat", "cæt"),
         ("not", "nɒt"),
         ("cut", "cʌt"),
