@@ -18,6 +18,11 @@ lazy_static! {
         ("here", "her"),
         ("like", "lik"),
         ("their", "ðɛr"),
+        ("height", "hit"),
+        ("hear", "her"),
+        ("eight", "at"),
+        ("eat", "et"),
+        ("ate", "at")
     ]);
 }
 

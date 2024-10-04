@@ -26,7 +26,8 @@ const REPLACEMENTS: &[(&str, &str)] = &[
     (r"ea", "e"),
     (r"ee", "e"),
     (r"ate$", "at"),
-    (r"oo", "u"),
+    (r"oo", "ʊ"),
+    (r"\wone$", "on"),
 ];
 
 lazy_static! {
