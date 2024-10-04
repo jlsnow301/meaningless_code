@@ -10,7 +10,7 @@ Before diving into machine languages, I enjoyed learning spoken languages conver
 - Lack of conjugation from Thai
 - Phonemic words from Hindi
 
-It may eventually evolve into a list of my grievances with English.
+It may eventually devolve into a list of my grievances with English.
 
 ## Why Rust?
 
