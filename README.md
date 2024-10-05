@@ -4,13 +4,7 @@ This project translates English text using logical rules. More rules will be add
 
 ## Why?
 
-Before diving into machine languages, I enjoyed learning spoken languages conversationally. This process often highlights the quirks and inconsistencies of English. This project is inspired by features from other languages, such as:
-
-- Characters from Icelandic
-- Lack of conjugation from Thai
-- Phonemic words from Hindi
-
-It may eventually devolve into a list of my grievances with English.
+Before diving into machine languages, I enjoyed learning spoken languages conversationally. This process often highlights the inconsistencies of English. This project has become essentially a laundry list of grievances against the English language, drawing heavy influence from IPA and eventually planning to implement features of other languages, such as lack of conjugation from Thai.
 
 ## Why Rust?
 
@@ -30,8 +24,7 @@ You already know them! In fact, you're already remembering a metric ton of obscu
 2. The English alphabet was historically reduced due to technological limitations of the printing press. Since this is no longer an issue, some of the missing characters are added.
 3. Some letters are removed as redundant, such as 'k' and later "q".
 4. Letters have only one sound. There are no variations like "c" in "cat" and "city".
+5. Unlike IPA, English vowels are intended to sound just as the letter, such as the "e" in "deed".
+6. In most cases, vowels are not combined to create new sounds. For instance, "look" uses two o's to prodocue the "ʊ" sound, so look becomes _lʊk_.
+7. Also unlike IPA, compound consonants do not need to become a new letter so long as they are present in the pronunciation of the word. The "sh" in "shadow" does not need to become "ʃadow". However, the "th" in "thought" _does_ become "ð" because neither t nor h make that sound!
 
-## Some quirks
-
-1. Compound consonants. The "sh" in "shadow" does not need to become "ʃadow". However, the "th" in "thought" _does_ become "ð" because neither t nor h make that sound!
-2. Compound vowels. In most cases, vowels are not combined. English tends to use compound vowels in order to pronounce letters which are not in the alphabet. For instance, "look" uses two o's to produce the "ʊ" sound.
